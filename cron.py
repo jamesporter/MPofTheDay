@@ -67,5 +67,5 @@ all_data = [
     } for x in all_members
 ]
 
-with open('data.json', 'w') as outfile:
+with open('data%s.json' % datetime.datetime.now().isoformat().replace(":", "."), 'w') as outfile:
     json.dump(all_data, outfile)
