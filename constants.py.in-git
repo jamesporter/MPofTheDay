@@ -1,0 +1,3 @@
+# TheyWorkForYou API key
+TWFY_API_KEY = "" # FILL THIS IN!
+DEBUG = False
