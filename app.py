@@ -75,7 +75,7 @@ def show_mp(twfy_id):
     if success:
         y = mp['twfy_dob'][:4]
         m = mp['twfy_dob'][5:7]
-        d = mp['twfy_dob'][9:11]
+        d = mp['twfy_dob'][8:10]
 
         dt = datetime.datetime(int(y), int(m), int(d))
         age = 2013 - int(y)
