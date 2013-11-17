@@ -12,14 +12,38 @@
     <style>
         body { padding-top: 80px; }
 
+        .month{
+            padding:10px;
+        }
+
         .day{
             width:14.285714285%;
             float:left;
             height:100px;
+            font-size: 2em;
+            padding:5px;
+        }
+
+        .day:hover{
+            background: #acb6d1;
+            color: #eeeeee;
+        }
+
+        .extra-spacing{
+            height:64px;
         }
 
         @media(max-width:480px){
-             .day{height: 50px;}
+             .day{
+                 height: 50px;
+                font-size: 1em;
+
+             }
+
+            .extra-spacing{
+                height:32px;
+            }
+
         }
     </style>
 </head>
@@ -106,8 +130,11 @@
 
 
         </div>
+           </div>
+    <div class="row extra-spacing">
+        </div>
 
-
+            <div class="row">
         <div class="col-xs-6">
 
 
@@ -118,7 +145,7 @@
             <a class="btn btn-success btn-block"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Next</a>
             </div>
 
-
+            </div>
     </div>
 
 
