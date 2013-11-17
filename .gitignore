@@ -40,4 +40,6 @@ nosetests.xml
 *.iml
 .idea
 
+env
+.DS_Store
 constants.py
