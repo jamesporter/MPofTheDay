@@ -22,6 +22,7 @@ def show_mp(twfy_id):
             break
 
     if mp:
+        mp['first_name'] = mp['name'].split()[0]
         return render_template('mp.html', mp=mp)
 
     return None
