@@ -19,7 +19,13 @@
 
 package org.complexview.mps;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+
 import org.apache.cordova.*;
 
 public class MPofTheDay extends CordovaActivity 
@@ -33,5 +39,34 @@ public class MPofTheDay extends CordovaActivity
         super.loadUrl(Config.getStartUrl());
         //super.loadUrl("file:///android_asset/www/index.html")
     }
+    
+    @Override
+    protected void onStart() {
+    	super.onStart();
+    	showNotification(getApplicationContext());
+    	
+    }
+
+	private void showNotification(Context context) {
+		NotificationManager nMan = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+		
+			Notification n = new Notification(R.drawable.notif,"MP of the Day" ,System.currentTimeMillis());
+			
+			n.flags |= Notification.FLAG_AUTO_CANCEL;
+			n.flags |= Notification.FLAG_SHOW_LIGHTS;
+			n.flags |= Notification.DEFAULT_SOUND;
+			
+			n.ledARGB = 0xff00ff00;
+			n.ledOnMS = 200;
+			n.ledOffMS = 200;
+			
+			Intent toLaunch = new Intent(context, MPofTheDay.class);
+			PendingIntent intentBack = PendingIntent.getActivity(context, 0, toLaunch, 0);
+			n.setLatestEventInfo(context, "MP of the Day", "Learn about your MP of the day", intentBack);
+	
+			nMan.notify(1,n);
+		
+	}
 }
 

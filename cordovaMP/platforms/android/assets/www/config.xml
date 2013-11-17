@@ -7,8 +7,8 @@
     <author email="dev@callback.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <content src="index.html" />
+    <content src="resources/prototype-page.html" />
     <access origin="*" />
-    <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="true" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="false" />
 </widget>
