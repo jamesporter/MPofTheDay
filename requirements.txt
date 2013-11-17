@@ -12,4 +12,5 @@ itsdangerous==0.23
 mongoengine==0.8.4
 nltk==2.0.4
 pymongo==2.6.3
+requests==2.0.1
 wsgiref==0.1.2
