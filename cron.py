@@ -5,8 +5,11 @@ import sys
 import time
 import urllib
 import urllib2
+import summarize as sz
+import re
 
 import constants
+
 
 def get_twfy_birthday(mp_extra_info):
     sys.stdout.write('.')
@@ -18,6 +21,7 @@ def get_twfy_birthday(mp_extra_info):
     except (ValueError, KeyError):
         pass
     return None
+
 
 def get_wiki_birthday(mp_extra_info):
     try:
@@ -35,6 +39,30 @@ def get_wiki_birthday(mp_extra_info):
     except (ValueError, KeyError, AttributeError):
         pass
     return None
+
+
+MAX_LEN = 1000
+
+
+def mp_sz(wiki_url):
+    def strip_wiki_extras(sent):
+        return re.sub("(\s\(born.*?\d{4}\))|(\[.*?\])|(^\s)", "", sent)
+
+    def abridge(sent):
+        i = MAX_LEN
+        while i < len(sent):
+            if sent[i] == " ":
+                return sent[:(i + 1)] + "..."
+            i += 1
+        return sent
+
+    sum_arr = sz.summarize_page(wiki_url).summaries
+    sum_clean_arr = [strip_wiki_extras(s) for s in sum_arr]
+    summary = " ".join(sum_clean_arr)
+    if len(summary) > MAX_LEN:
+        summary = abridge(summary)
+    return summary
+
 
 url = urllib2.urlopen("http://www.theyworkforyou.com/api/getMPs?" + urllib.urlencode({
     "key": constants.TWFY_API_KEY,
@@ -63,7 +91,7 @@ all_data = [
         'interests': all_mp_extra_info[x['person_id']].get('wrans_subjects', None),
         'twfy_dob': get_twfy_birthday(all_mp_extra_info[x['person_id']]),
         'wiki_dob': get_wiki_birthday(all_mp_extra_info[x['person_id']]),
-        'wiki_url': all_mp_extra_info[x['person_id']].get('wikipedia_url', None),
+        'wiki_url': all_mp_extra_info[x['person_id']].get('wikipedia_url', None)
     } for x in all_members
 ]
 
