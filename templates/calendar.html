@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xs-12">
+        <h1>{{month.title()}} {{year}}</h1>
+
+        <div class="month">
+            {% for week in weeks %}
+            <div class="week">
+                {% for day in week %}
+                    {% if day.hide %}
+                        <div class="day day-blank">&nbsp;</div>
+                    {% else %}
+                        
+                        {% if day.mp %}
+                            <div class="day" style="overflow: hidden"><a href="/mp/{{ day.mp.twfy_id }}"><img style="width: 100%" src="/static/mp_images/{{ day.mp.twfy_id }}.png" /></a></div>
+                        {% else %}
+                            <div class="day">{{ day.num }}</div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+       </div>
+<div class="row extra-spacing">
+    </div>
+
+        <div class="row">
+    <div class="col-xs-6">
+
+
+       <a class="btn btn-success btn-block" href="/cal/{{month}}/{{year}}/prev"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;Previous</a>
+                              </div>
+        <div class="col-xs-6">
+
+        <a class="btn btn-success btn-block" href="/cal/{{month}}/{{year}}/next"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;&nbsp;Next</a>
+        </div>
+
+        </div>
+</div>
+{% endblock %}

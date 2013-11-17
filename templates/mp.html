@@ -3,11 +3,11 @@
 {% block content %}
 <div class="row">
     <div class="col-sm-8">
-        <img src="http://partyhatify.herokuapp.com/{{ hat_choice }}?src=https://raw.github.com/jamesporter/MPofTheDay/master/static/mp_images/{{mp.twfy_id}}.png" class="img-thumbnail" style="max-width:180px"/>
-        <h1>{{mp.name}}</h1>
-        <h4>MP for Whitney</h4>
+        <img src="http://partyhatify.herokuapp.com/{{ hat_choice }}?src=https://raw.github.com/jamesporter/MPofTheDay/master/static/mp_images/{{mp.twfy_id}}.png" class="img-thumbnail" style="width:200px"/>
+        <h1>Congrats {{mp.name}} MP!</h1>
 
-    <h2>Summary</h2>
+        <h3>{{ age }} today! (on {{ date }})</h3>
+
     <p>{{ mp.summary }}</p>
 
     <a href="{{mp.wiki_url}}" class="btn btn-primary">Read more on Wikipedia</a>
