@@ -55,13 +55,15 @@ def mp_sz(wiki_url):
                 return sent[:(i + 1)] + "..."
             i += 1
         return sent
-
-    sum_arr = sz.summarize_page(wiki_url).summaries
-    sum_clean_arr = [strip_wiki_extras(s) for s in sum_arr]
-    summary = " ".join(sum_clean_arr)
-    if len(summary) > MAX_LEN:
-        summary = abridge(summary)
-    return summary
+    if wiki_url:
+        sum_arr = sz.summarize_page(wiki_url).summaries
+        sum_clean_arr = [strip_wiki_extras(s) for s in sum_arr]
+        summary = " ".join(sum_clean_arr)
+        if len(summary) > MAX_LEN:
+            summary = abridge(summary)
+        return summary
+    else:
+        return None
 
 
 url = urllib2.urlopen("http://www.theyworkforyou.com/api/getMPs?" + urllib.urlencode({
@@ -91,7 +93,8 @@ all_data = [
         'interests': all_mp_extra_info[x['person_id']].get('wrans_subjects', None),
         'twfy_dob': get_twfy_birthday(all_mp_extra_info[x['person_id']]),
         'wiki_dob': get_wiki_birthday(all_mp_extra_info[x['person_id']]),
-        'wiki_url': all_mp_extra_info[x['person_id']].get('wikipedia_url', None)
+        'wiki_url': all_mp_extra_info[x['person_id']].get('wikipedia_url', None),
+        'summary': mp_sz(all_mp_extra_info[x['person_id']].get('wikipedia_url', None))
     } for x in all_members
 ]
 
