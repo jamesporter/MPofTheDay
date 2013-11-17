@@ -41,8 +41,8 @@
 
     <div class="row">
         <div class="col-sm-8">
-            <img src="David_Cameron_official.jpg" class="img-thumbnail" style="max-width:180px"/>
-            <h1>David Cameron</h1>
+            <img src="http://partyhatify.herokuapp.com/2?src=https://raw.github.com/jamesporter/MPofTheDay/master/static/mp_images/{{mp.twfy_id}}.png" class="img-thumbnail" style="max-width:180px"/>
+            <h1>{{mp.name}}</h1>
             <h4>MP for Whitney</h4>
 
             <h2>Politics</h2>
@@ -59,16 +59,16 @@
             <h2>Personal</h2>
             <p>Eu 90's McSweeney's retro cred church-key. Letterpress keffiyeh mumblecore, farm-to-table semiotics labore cred leggings accusamus artisan eu. Blog mumblecore Pitchfork fashion axe iPhone meh. Odio bespoke twee, Banksy sartorial readymade literally four loko craft beer typewriter pour-over 8-bit. Delectus biodiesel sapiente, flannel cillum church-key mustache bicycle rights ennui mumblecore hashtag chambray ugh. Ethical freegan occaecat Shoreditch mlkshk. Typewriter ut ethnic freegan Echo Park keytar minim.</p>
 
-            <a href="" class="btn btn-primary">Read more on Wikipedia</a>
+            <a href="{{mp.wiki_url}}" class="btn btn-primary">Read more on Wikipedia</a>
 
         </div>
 
         <div class="col-sm-4">
             <div class="well">
 
-            <h2>Contact David</h2>
-           <a class="btn btn-success btn-block"><span class="glyphicon glyphicon-retweet"></span>&nbsp;&nbsp;Tweet David</a>
-            <a class="btn btn-success btn-block"><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;Contact David</a>
+            <h2>Contact {{mp.name}}</h2>
+           <a class="btn btn-success btn-block"><span class="glyphicon glyphicon-retweet"></span>&nbsp;&nbsp;Tweet {{mp.name}}</a>
+            <a class="btn btn-success btn-block"><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;Contact {{mp.name}}</a>
             </div>
         </div>
 
