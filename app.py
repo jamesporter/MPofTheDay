@@ -1,3 +1,6 @@
+from datetime import datetime
+import calendar
+import time
 import json
 from random import choice
 
@@ -6,11 +9,21 @@ from flask import render_template
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
+@app.route("/cal/<month>/<year>")
+def calendar(month, year):
     with open('data.json') as data_file:    
         data = json.load(data_file)
-    return render_template('index.html', data=data)
+
+    month = month.title()
+
+    first = "01 %s %s" % (month, year)
+    return first
+    first_date = datetime.strptime(first, "%d %B %Y")
+
+    total_days = calendar.monthrange(year, first_date.month)[1]
+    weekday = first_date.weekday()
+
+    return render_template('calendar.html', data=data, month=month, year=year, render_data=render_data)
 
 @app.route('/mp/<twfy_id>.html')
 def show_mp(twfy_id):
