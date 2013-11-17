@@ -21,28 +21,35 @@
             float:left;
             height:100px;
             font-size: 2em;
-            padding:5px;
+            padding:10px;
+            background: #dddddd;
+        }
+
+        .day-blank{
+            background: rgba(0,0,0,0);
         }
 
         .day:hover{
-            background: #acb6d1;
+            background: #2c3e50;
             color: #eeeeee;
         }
 
+        .day-blank:hover{
+            background: rgba(0,0,0,0);
+        }
+
         .extra-spacing{
-            height:64px;
+            height:32px;
         }
 
         @media(max-width:480px){
              .day{
                  height: 50px;
                 font-size: 1em;
-
+                 padding:5px;
              }
 
-            .extra-spacing{
-                height:32px;
-            }
+
 
         }
     </style>
@@ -79,11 +86,11 @@
 
             <div class="month">
                 <div class="week">
-                    <div class="day">&nbsp;</div>
-                    <div class="day">&nbsp; </div>
-                    <div class="day">&nbsp; </div>
-                    <div class="day">&nbsp; </div>
-                    <div class="day">&nbsp; </div>
+                    <div class="day day-blank">&nbsp;</div>
+                    <div class="day day-blank">&nbsp; </div>
+                    <div class="day day-blank">&nbsp; </div>
+                    <div class="day day-blank">&nbsp; </div>
+                    <div class="day day-blank">&nbsp; </div>
                     <div class="day">1</div>
                     <div class="day">2</div>
                 </div>
