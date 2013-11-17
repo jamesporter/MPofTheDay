@@ -10,14 +10,13 @@ from flask import render_template
 app = Flask(__name__)
 
 @app.route("/cal/<month>/<year>")
-def calendar(month, year):
+def show_calendar(month, year):
     with open('data.json') as data_file:    
         data = json.load(data_file)
 
     month = month.title()
 
     first = "01 %s %s" % (month, year)
-    return first
     first_date = datetime.strptime(first, "%d %B %Y")
 
     total_days = calendar.monthrange(year, first_date.month)[1]
@@ -27,7 +26,7 @@ def calendar(month, year):
 
 @app.route('/mp/<twfy_id>.html')
 def show_mp(twfy_id):
-    with open('data.json') as data_file:
+    with open('data-latest.json') as data_file:
         data = json.load(data_file)
 
     success = False

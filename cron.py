@@ -90,6 +90,7 @@ all_data = [
     {
         'twfy_id': x['person_id'],
         'name': x['name'],
+        'constituency': x['constituency'],
         'interests': all_mp_extra_info[x['person_id']].get('wrans_subjects', None),
         'twfy_dob': get_twfy_birthday(all_mp_extra_info[x['person_id']]),
         'wiki_dob': get_wiki_birthday(all_mp_extra_info[x['person_id']]),
@@ -98,5 +99,5 @@ all_data = [
     } for x in all_members
 ]
 
-with open('data%s.json' % datetime.datetime.now().isoformat().replace(":", "."), 'w') as outfile:
+with open('data-latest.json', 'w') as outfile:
     json.dump(all_data, outfile)
