@@ -27,7 +27,7 @@ def show_calendar(month, year):
             yield l[i:i+n]
 
     def get_mp_from_day(daystr, num):
-        with open('data-latest.json') as data_file:    
+        with open('data-latest.json') as data_file:
             data = json.load(data_file)
         success = False
         while data:
@@ -73,6 +73,9 @@ def show_mp(twfy_id):
             break
 
     if success:
+        if 'twfy_dob' not in mp:
+            return
+
         y = mp['twfy_dob'][:4]
         m = mp['twfy_dob'][5:7]
         d = mp['twfy_dob'][8:10]
